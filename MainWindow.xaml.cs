@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace pong_bo_tak {
     /// <summary>
@@ -15,9 +16,18 @@ namespace pong_bo_tak {
     /// </summary>
     public partial class MainWindow : Window {
         Ball ball;
+        DispatcherTimer timer;
         public MainWindow() {
             InitializeComponent();
             ball = new Ball(MainCanvas,10,10);
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(16);
+            timer.Tick += tick;
+            timer.Start();
+        }
+
+        private void tick(object? sender, EventArgs e) {
+            ball.Move();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e) {

@@ -18,11 +18,13 @@ namespace pong_bo_tak {
         public int DirectionX { get; set; }
         public int DirectionY { get; set; }
         public Ellipse Shape { get; set; }
+        public double Speed { get; set; }
 
         public Ball(Canvas canvas, int width, int height) {
             Canvas = canvas;
             Width = width;
             Height = height;
+            Speed = 2;
             Shape = new Ellipse() {
                 Width = width,
                 Height = height,
@@ -43,8 +45,18 @@ namespace pong_bo_tak {
             Canvas.SetTop(Shape, Y);
         }
 
+        public void Move() {
+            X += Math.Cos(Angle) * Speed * DirectionX;
+            Y += Math.Sin(Angle) * Speed * DirectionY;
+
+            if (Y + Height >= Canvas.Height||Y-Height<=0)
+                DirectionY *= -1;
+
+            Draw();
+        }
+
         public void Reset() {
-            throw new NotImplementedException();
+            
         }
     }
 }
