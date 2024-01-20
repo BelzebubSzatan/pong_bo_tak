@@ -14,8 +14,10 @@ namespace pong_bo_tak {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        Ball ball;
         public MainWindow() {
             InitializeComponent();
+            ball = new Ball(MainCanvas,10,10);
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e) {
