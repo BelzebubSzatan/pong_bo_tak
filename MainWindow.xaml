@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pong_bo_tak"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowStyle="None"
+        Background="Black"
+        WindowStartupLocation="CenterScreen"
+        MouseMove="Window_MouseMove"
+        KeyDown="Window_KeyDown">
     <Grid>
-
+        <Canvas x:Name="MainCanvas"
+                Width="800"
+                Height="450">
+            <Label x:Name="Player2" FontSize="20" Foreground="White" Content="0" Canvas.Right="200" Canvas.Top="50"/>
+            <Label x:Name="Player1" FontSize="20" Foreground="White" Content="0" Canvas.Left="200" Canvas.Top="50"/>
+        </Canvas>
     </Grid>
 </Window>
